@@ -45,10 +45,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //$data = Post::findOrFail($id);
-        return view('admin.posts.show', compact('post'));
+        
     }
 
     /**
