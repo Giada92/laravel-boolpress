@@ -19,7 +19,7 @@
                     <th>{{ $item->title }}</th>
                     <th>{{ $item->slug }}</th>
                     <th>
-                        <a href="#" class="btn btn-primary">SHOW</a> 
+                        <a href="#" class="btn btn-secondary">SHOW</a> 
                     </th>
                     <th>EDIT</th>
                     <th>DELETE</th>

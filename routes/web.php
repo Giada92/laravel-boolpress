@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-
 //rotta autenticazione
 Auth::routes();
 
@@ -28,3 +26,7 @@ Route::middleware('auth')
         Route::resource('posts', 'PostController');
 });
 
+
+//rotte pubbliche
+//Route::get('/', 'HomeController@index')->name('home');
+Route::get('{any?}', 'HomeController@index')->where('any', '.*')->name('home');
