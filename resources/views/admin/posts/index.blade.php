@@ -19,7 +19,7 @@
                     <th>{{ $item->title }}</th>
                     <th>{{ $item->slug }}</th>
                     <th>
-                        <a href="#" class="btn btn-secondary">SHOW</a> 
+                        <a href="{{ route('admin.posts.show', $item->id) }}" class="btn btn-secondary">SHOW</a> 
                     </th>
                     <th>EDIT</th>
                     <th>DELETE</th>
