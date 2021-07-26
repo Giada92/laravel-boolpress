@@ -22,7 +22,9 @@
                     <th>
                         <a href="{{ route('admin.posts.show', $item->id) }}" class="btn btn-secondary">SHOW</a> 
                     </th>
-                    <th>EDIT</th>
+                    <th>
+                        <a href="{{ route('admin.posts.edit', $item->id) }}" class="btn btn-warning">EDIT</a>
+                    </th>
                     <th>DELETE</th>
                   </tr>
                 @endforeach
