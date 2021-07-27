@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        //dd($category);
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -42,7 +45,8 @@ class PostController extends Controller
         //dd($data);
         $request->validate([
             'title'=>'required|max:255',
-            'content'=>'required'
+            'content'=>'required',
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
         //nuova istanza
@@ -92,7 +96,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -105,15 +110,16 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
-
+        //dd($data);
         $request->validate([
             'title'=>'required|max:255',
-            'content'=>'required'
+            'content'=>'required',
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
                
         //dd($slug != $post->slug);
-        if($data['title'] != $post->slug) {
+        if($data['title'] != $post->title) {
 
             $slug = Str::slug($data['title'], '-');
         
@@ -130,9 +136,9 @@ class PostController extends Controller
                 $slugVerifica = Post::where('slug', $slug)->first();
                 $count++;
             }
-        }
 
-        $data['slug'] = $slug;
+            $data['slug'] = $slug;
+        }       
 
         $post->update($data);
         return redirect()->route('admin.posts.show', $post->id);
