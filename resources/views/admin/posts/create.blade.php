@@ -32,8 +32,27 @@
                 @error('category_id')
                     <small class="alert-danger">{{ $message }}</small>
                 @enderror
-              </div>
-            <button type="submit" class="btn btn-primary">Crea</button>
+            </div>
+
+              {{-- tags --}}
+            <div class="form-group">
+              @foreach ($tags as $tag)
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]"
+                    {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                </div>
+              @endforeach
+            </div>
+            <div class="mb-3">
+              @error('tags')
+                <small class="alert-danger">{{ $message }}</small>
+              @enderror
+            </div>
+              {{-- /tags --}}
+            <div>
+              <button type="submit" class="btn btn-primary">Crea</button>
+            </div>
         </form>
     </div>
 @endsection
