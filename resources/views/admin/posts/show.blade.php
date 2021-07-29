@@ -9,7 +9,14 @@
                 <span class="badge badge-secondary">Non fa parte di nessuna categoria</span>
             @endif
             
-        </h1> 
+        </h1>
+        <div>
+            @forelse ($post->tags as $item)
+                <a href="{{ route('admin.tags.show', $item->id) }}" class="badge badge-dark">{{ $item->name }}</a>
+            @empty
+                <p>Articolo non collegato a nessun Tag</p>
+            @endforelse
+        </div>
         <small>{{ $post->slug }}</small>
         <div class="my-4">
             <a class="btn btn-warning" href="{{ route('admin.posts.edit', $post->id ) }}">Modifica</a>

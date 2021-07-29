@@ -17,6 +17,7 @@
                   <th>Titolo</th>
                   <th>Slug</th>
                   <th>Categorie</th>
+                  <th>Tag</th>
                   <th colspan="3" class="text-center">AZIONI</th>
                 </tr>
             <tbody>
@@ -30,6 +31,11 @@
                     @else
                         <td></td>
                     @endif
+                    <td>
+                        @foreach ($item->tags as $tag)
+                            <small href="#" class="badge badge-dark">{{ $tag->name }}</small>
+                        @endforeach
+                    </td>
                     <td>
                         <a href="{{ route('admin.posts.show', $item->id) }}" class="btn btn-secondary">SHOW</a> 
                     </td>
