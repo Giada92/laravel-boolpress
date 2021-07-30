@@ -1,20 +1,33 @@
 <template>
-    <WorkInProgress title="Sito il Costruzione"
-                subtitle="Titolo Provvisorio"/>
+    <div>
+        <!-- Heder della pagina -->
+        <Header />
+        <!-- /Heder della pagina -->
+
+        <!-- Elenco Articoli -->
+        <Main />
+        <!-- /Elenco Articoli -->
+    </div>
 </template>
 
 <script>
-import WorkInProgress from './components/WorkInProgress';
+import Header from './components/Header';
+import Main from './components/Main';
+
 
 export default {
     name: 'App',
     components: {
-        WorkInProgress
+        Header,
+        Main
     }
 }
 </script>
 
 <style lang="scss" scoped>
 
+body {
+    background-color: lightgrey;
+}
     
 </style>

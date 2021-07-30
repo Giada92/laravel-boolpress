@@ -57,7 +57,6 @@
                 <small class="alert-danger">{{ $message }}</small>
               @enderror
             </div>
-            {{-- @dd($post->tags) --}}
             {{-- /tags --}}
             <button type="submit" class="btn btn-primary">Salva Modifiche</button>
         </form>
