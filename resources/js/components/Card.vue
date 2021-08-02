@@ -4,8 +4,7 @@
             <h5 class="card-title">{{ item.title }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ item.slug }}</h6>
             <p class="card-text">{{ shortText(item.content, 150)}}</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <router-link class="nav-link" :to="{ name: 'singolo-post', params: { slug: item.slug } }">Leggi L'articolo</router-link>
         </div>
     </div>
 </template>
