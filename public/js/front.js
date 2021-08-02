@@ -2238,6 +2238,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SingoloPost',
   data: function data() {
@@ -3883,11 +3902,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container my-5" }, [
-    _c("h2", [_vm._v(_vm._s(_vm.post.title))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.post.content))])
-  ])
+  return _c(
+    "div",
+    { staticClass: "container my-5" },
+    [
+      _c("h2", [_vm._v(_vm._s(_vm.post.title))]),
+      _vm._v(" "),
+      _vm.post.category != null
+        ? _c("div", [
+            _c("span", { staticClass: "badge badge-dark mr-2 mb-3" }, [
+              _c("h4", [_vm._v(_vm._s(_vm.post.category.name))])
+            ])
+          ])
+        : _c("p", [_vm._v("Nessuna categoria associata")]),
+      _vm._v(" "),
+      _vm.post.tags != null
+        ? _c(
+            "div",
+            { staticClass: "mt-5" },
+            _vm._l(_vm.post.tags, function(tag) {
+              return _c(
+                "span",
+                { key: tag.id, staticClass: "badge badge-info mr-2" },
+                [_c("h4", [_vm._v(_vm._s(tag.name))])]
+              )
+            }),
+            0
+          )
+        : _c("p", [_vm._v("Nessun tag associato")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "my-5" }, [_vm._v(_vm._s(_vm.post.content))]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: { name: "blog" } } }, [
+        _vm._v("Torna agli articoli")
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
