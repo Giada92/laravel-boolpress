@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-5">
+  <div class="container my-5" v-if="!loader">
       <h2>{{post.title}}</h2>
       <!-- Stampo la categoria -->
       <div v-if="post.category != null">
@@ -22,14 +22,21 @@
       <p class="my-5">{{ post.content }}</p>
       <router-link :to="{ name: 'blog'}">Torna agli articoli</router-link>
   </div>
+  <Loader v-else />
 </template>
 
 <script>
+import Loader from '../components/Loader';
+
 export default {
     name:'SingoloPost',
+    components: {
+        Loader
+    },
     data(){
         return{
             post: [],
+            loader: true,
         }
     },
     methods: {
@@ -48,6 +55,7 @@ export default {
     created(){
         //console.log(this.$route.params.slug);
         this.getPost(this.$route.params.slug);
+        this.loader = false;
     }
 }
 </script>

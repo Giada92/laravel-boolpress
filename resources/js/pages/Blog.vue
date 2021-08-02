@@ -1,5 +1,5 @@
 <template>
-    <main class="container my-5">
+    <main class="container my-5" v-if="!loader == true">
         <h2 class="text-uppercase text-center">Articoli</h2>
         <div class="row">
             <div class="cards col-12 d-flex justify-content-around flex-wrap">
@@ -39,21 +39,25 @@
         </div>
         <!-- /Paginazione -->
     </main>
+    <Loader v-else/>
 </template>
 
 <script>
 import Card from '../components/Card.vue';
+import Loader from '../components/Loader.vue';
 
 export default {
     name: 'Blog',
     components: {
-        Card
+        Card,
+        Loader
     },
     data(){
         return{
             posts: [],
             current_page: 1,
-            last_page: 1
+            last_page: 1,
+            loader: true
         }
     },
     methods: {
@@ -64,6 +68,7 @@ export default {
                     this.posts = res.data.data;
                     this.current_page = res.data.current_page;
                     this.last_page = res.data.last_page;
+                    this.loader = false
             })
             .catch((error) => {
                     console.log(error);
